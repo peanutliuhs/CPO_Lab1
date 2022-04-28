@@ -119,7 +119,7 @@ class Testfunction(unittest.TestCase):
         self.assertEqual(arr.mconcat(arr2).to_list(),
                          arr2.mconcat(arr).to_list())
 
-    @given(st.lists(st.integers()), \
+    @given(st.lists(st.integers()), 
     st.lists(st.integers()), st.lists(st.integers()))
     def test_monoid_associativity(self, lst1, lst2, lst3):
         dyArr = DynamicArray()
