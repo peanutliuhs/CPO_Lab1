@@ -55,8 +55,8 @@ class DynamicArray:
             print(self.A[i], end=' ')
         print()
 
-    
     # 1. add a new element
+
     def insert(self, k, value):
         """Insert value at position k."""
         if self.n == self.capacity:
@@ -72,7 +72,7 @@ class DynamicArray:
         """Remove item at index (default first)."""
         if (self._len_() < index):
             print("index is out of range")
-            return  
+            return
         if index >= self.n or index < 0:
             raise ValueError('invalid index')
         for i in range(index, self.n - 1):
@@ -179,7 +179,7 @@ class DynamicArray:
     def __iter__(self) -> Iterator:
         self.num = 0
         return self
-    
+
     def __next__(self) -> Callable:
         if self.num >= self.size():
             raise StopIteration

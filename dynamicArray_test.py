@@ -19,7 +19,6 @@ class Testfunction(unittest.TestCase):
         arr = dyArr.from_list(lst)
         self.assertEqual(arr.deleteindex(2).to_list(), [1, 4, 3])
         self.assertEqual(arr.deletevalue(4).to_list(), [1, 3])
-        
 
     def test_size(self):
         dyArr = DynamicArray()
@@ -108,7 +107,7 @@ class Testfunction(unittest.TestCase):
         dyArr = DynamicArray()
         arr = dyArr.from_list(lst)
         self.assertEqual(arr.size(), len(lst))
-    
+
     @given(st.lists(st.integers()))
     def test_monoid_identity(self, lst):
         dyArr = DynamicArray()
@@ -117,8 +116,9 @@ class Testfunction(unittest.TestCase):
         self.assertEqual(arr.mconcat(arr2).to_list(), arr.to_list())
         self.assertEqual(arr2.mconcat(arr).to_list(), arr.to_list())
         arr2 = dyArr.from_list([])
-        self.assertEqual(arr.mconcat(arr2).to_list(), arr2.mconcat(arr).to_list())
-    
+        self.assertEqual(arr.mconcat(arr2).to_list(),
+                         arr2.mconcat(arr).to_list())
+
     @given(st.lists(st.integers()), st.lists(st.integers()), st.lists(st.integers()))
     def test_monoid_associativity(self, lst1, lst2, lst3):
         dyArr = DynamicArray()
@@ -129,4 +129,3 @@ class Testfunction(unittest.TestCase):
         a = dyArr.from_list(lst1)
         arr2 = a.mconcat(b.mconcat(c))
         self.assertEqual(arr1.to_list(), arr2.to_list())
-
