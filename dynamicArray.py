@@ -1,6 +1,5 @@
 import ctypes
 import math
-import numpy as np
 from functools import reduce
 from typing import Iterator, Callable
 
