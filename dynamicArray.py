@@ -1,7 +1,6 @@
-import ctypes
 import math
 from functools import reduce
-from typing import Any, List, Iterator, Callable
+from typing import Any, List, Callable
 
 
 class DynamicArray:

@@ -135,7 +135,7 @@ class Testfunction(unittest.TestCase):
         dyArr1 = DynamicArray()
         dyArr2 = DynamicArray()
         dyArr3 = DynamicArray()
-        a = dyArr1.from_list(lst1)
+        dyArr1.from_list(lst1)
         b = dyArr2.from_list(lst2)
         c = dyArr3.from_list(lst3)
         dyArr1.mconcat(b)
