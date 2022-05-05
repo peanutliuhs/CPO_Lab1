@@ -22,6 +22,10 @@ enough for educational purposes.
 
 ## Changelog
 
+- 05.05.2022 - 1
+  - Update code. Add docstrings for all functions.
+- 05.05.2022 - 0
+  - Update code. Add type hints.
 - 28.04.2022
   - Update README. Add Design notes.
 - 26.04.2022
