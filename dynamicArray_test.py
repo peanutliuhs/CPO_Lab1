@@ -2,43 +2,44 @@ import unittest
 from dynamicArray import DynamicArray
 from hypothesis import given
 import hypothesis.strategies as st
+from typing import List
 
 
 class Testfunction(unittest.TestCase):
 
-    def test_add(self):
+    def test_add(self) -> None:
         dyArr = DynamicArray()
         self.assertEqual(dyArr.insert(0, 1), [1])
         self.assertEqual(dyArr.insert(1, 4), [1, 4])
         self.assertEqual(dyArr.insert(2, 5), [1, 4, 5])
         self.assertEqual(dyArr.insert(3, 3), [1, 4, 5, 3])
 
-    def test_delete(self):
+    def test_delete(self) -> None:
         dyArr = DynamicArray()
         lst = [1, 4, 5, 3]
         dyArr.from_list(lst)
         self.assertEqual(dyArr.deleteindex(2), [1, 4, 3])
         self.assertEqual(dyArr.deletevalue(4), [1, 3])
 
-    def test_size(self):
+    def test_size(self) -> None:
         dyArr = DynamicArray()
         lst = [1, 4, 5, 3]
         dyArr.from_list(lst)
         self.assertEqual(dyArr.size(), 4)
 
-    def test_reverse(self):
+    def test_reverse(self) -> None:
         dyArr = DynamicArray()
         lst = [1, 4, 5, 3]
         dyArr.from_list(lst)
         self.assertEqual(dyArr.reverse(), [3, 5, 4, 1])
 
-    def test_from_list(self):
+    def test_from_list(self) -> None:
         lst = [1, 4, 5, 3]
         dyArr = DynamicArray()
         dyArr.from_list(lst)
         self.assertEqual(dyArr.to_list(), lst)
 
-    def test_to_list(self):
+    def test_to_list(self) -> None:
         dyArr = DynamicArray()
         self.assertEqual(dyArr.to_list(), [])
         lst = [1, 4, 5, 3]
@@ -49,14 +50,14 @@ class Testfunction(unittest.TestCase):
             ls1.append(dyArr.A[i])
         self.assertEqual(ls1, ls)
 
-    def test_find(self):
+    def test_find(self) -> None:
         dyArr = DynamicArray()
         lst = [1, 4, 5, 3]
         dyArr.from_list(lst)
         self.assertEqual(dyArr.find_value(2), 5)
         self.assertEqual(dyArr.find_key(5), 2)
 
-    def test_filter_func(self):
+    def test_filter_func(self) -> None:
         dyArr = DynamicArray()
         lst = [1, 4, 5, 3]
         dyArr.from_list(lst)
@@ -64,19 +65,19 @@ class Testfunction(unittest.TestCase):
         self.assertEqual(dyArr.filter_func(dyArr.value_is_even), [4])
         self.assertEqual(dyArr.filter_func(dyArr.is_sqr), [1, 4])
 
-    def test_map_func(self):
+    def test_map_func(self) -> None:
         dyArr = DynamicArray()
         lst = [1, 4, 5, 3]
         dyArr.from_list(lst)
         self.assertEqual(dyArr.map_func(dyArr.square), [1, 16, 25, 9])
 
-    def test_reduce_func(self):
+    def test_reduce_func(self) -> None:
         dyArr = DynamicArray()
         lst = [1, 4, 5, 3]
         dyArr.from_list(lst)
         self.assertEqual(dyArr.reduce_func(dyArr.add), 13)
 
-    def test_iter(self):
+    def test_iter(self) -> None:
         dyArr1 = DynamicArray()
         dyArr2 = DynamicArray()
         lst = [1, 4, 5, 3]
@@ -90,13 +91,13 @@ class Testfunction(unittest.TestCase):
         self.assertEqual(dyArr2.next(), 4)
         self.assertEqual(dyArr1.next(), dyArr2.next())
 
-    def test_mempty(self):
+    def test_mempty(self) -> None:
         dyArr = DynamicArray()
         lst = [1, 4, 5, 3]
         dyArr.from_list(lst)
         self.assertEqual(dyArr.mempty(), [])
 
-    def test_mconcat(self):
+    def test_mconcat(self) -> None:
         dyArr1 = DynamicArray()
         dyArr2 = DynamicArray()
         dyArr1.from_list([])
@@ -106,19 +107,19 @@ class Testfunction(unittest.TestCase):
         self.assertEqual(dyArr1.mconcat(arr2), [1, 4, 5, 3])
 
     @given(st.lists(st.integers()))
-    def test_from_list_to_list(self, lst):
+    def test_from_list_to_list(self, lst: List[int]) -> None:
         dyArr = DynamicArray()
         arr = dyArr.from_list(lst)
         self.assertEqual(lst, arr)
 
     @given(st.lists(st.integers()))
-    def test_len_size(self, lst):
+    def test_len_size(self, lst: List[int]) -> None:
         dyArr = DynamicArray()
         dyArr.from_list(lst)
         self.assertEqual(dyArr.size(), len(lst))
 
     @given(st.lists(st.integers()))
-    def test_monoid_identity(self, lst):
+    def test_monoid_identity(self, lst: List[int]) -> None:
         dyArr1 = DynamicArray()
         dyArr2 = DynamicArray()
         arr = dyArr1.from_list(lst)
@@ -131,7 +132,8 @@ class Testfunction(unittest.TestCase):
 
     @given(st.lists(st.integers()),
            st.lists(st.integers()), st.lists(st.integers()))
-    def test_monoid_associativity(self, lst1, lst2, lst3):
+    def test_monoid_associativity(self, lst1: List[int],
+                                  lst2: List[int], lst3: List[int]) -> None:
         dyArr1 = DynamicArray()
         dyArr2 = DynamicArray()
         dyArr3 = DynamicArray()
